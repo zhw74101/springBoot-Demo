@@ -16,20 +16,23 @@ public class StudentsController {
     @Autowired
     private StudentRepository studentRepository;
 
-    @RequestMapping(value = "bystuname/{stuName}",produces="application/json;charset=UTF-8")
-    public Students getOneByStuName(@PathVariable("stuName") String stuName){
+    /*
+    *@RequestMapping 设置映射路径，通过produces = "application/json;charset=UTF-8" 设置返回json的编码格式
+    * */
+    @RequestMapping(value = "bystuname/{stuName}", produces = "application/json;charset=UTF-8")
+    public Students getOneByStuName(@PathVariable("stuName") String stuName) {
         Students students = studentRepository.findByStuName(stuName);
         return students;
     }
 
     @RequestMapping("bystuage/{stuAge}")
-    public Students getOneByStuAge(@PathVariable("stuAge") int stuAge){
+    public Students getOneByStuAge(@PathVariable("stuAge") int stuAge) {
         return studentRepository.findByStuAge(stuAge);
     }
 
     @RequestMapping("bystuname/{stuName}/{stuSex}")
-    public Students getOne(@PathVariable("stuName") String stuName,@PathVariable("stuSex") String stuSex){
-        return studentRepository.findByStuNameAndStuSex(stuName,stuSex);
+    public Students getOne(@PathVariable("stuName") String stuName, @PathVariable("stuSex") String stuSex) {
+        return studentRepository.findByStuNameAndStuSex(stuName, stuSex);
     }
 
 
